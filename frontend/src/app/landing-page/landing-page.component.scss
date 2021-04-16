@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&family=Open+Sans:wght@300&display=swap");
+header {
+  background-color: #4abe79;
+  padding: 20px;
+  font-size: 25px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  height: 35px;
+  padding-bottom: 0;
+}
+.wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: Montserrat;
+}
+.landing {
+  background-color: #f2f2f2;
+}
+main {
+  padding-top: 80px;
+  text-align: center;
+  font-family: Montserrat;
+}
+.head {
+  font-size: 30px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 20px;
+  padding-top: 30px;
+  padding-bottom: 70px;
+}
+.cardd {
+  max-width: 300px;
+  background-color: #f2f2f2;
+}
+.addition {
+  margin: 0 auto;
+  width: 400px;
+}
+.addition p {
+  padding: 10px;
+}
+.addition svg {
+  width: 15px;
+  height: 15px;
+}
+.btn{
+    width: 200px;
+    font-size: 20px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+footer {
+  background: #333333;
+  padding: 20px;
+}
+.hucuton p{
+    background-color: green;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #f2f2f2;
+}
