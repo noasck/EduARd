@@ -1,15 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login-page',
+  selector: 'app-login',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+
   }
 
+  clickLogin(): void {
+    this.auth.login('jjok730@gmail.com').subscribe(
+      (token) => {
+        console.log('Token Request...');
+      },
+      (err) => {},
+      () => this.router.navigate(['/admin/'])
+    );
+  }
 }

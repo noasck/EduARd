@@ -10,7 +10,11 @@ import { LoginPageComponent } from './admin/login-page/login-page.component';
 import { RegistrationComponent } from './admin/registration/registration.component';
 import { PupsReadComponent } from './admin/pups/pups-read/pups-read.component';
 import { PupsCreateComponent } from './admin/pups/pups-create/pups-create.component';
+<<<<<<< HEAD
 import { FormsModule } from '@angular/forms';
+=======
+import { HttpClientModule } from '@angular/common/http';
+>>>>>>> 46a1b17c84c4b8b1fff8dd6b32942fcd56a2a3aa
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+<<<<<<< HEAD
     FormsModule
+=======
+    HttpClientModule
+>>>>>>> 46a1b17c84c4b8b1fff8dd6b32942fcd56a2a3aa
   ],
   providers: [],
   bootstrap: [AppComponent]
