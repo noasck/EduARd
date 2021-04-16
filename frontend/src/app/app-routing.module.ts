@@ -5,7 +5,7 @@ import { AdminComponent } from './admin/admin.component';
 import { LoginPageComponent } from './admin/login-page/login-page.component';
 import { PupsCreateComponent } from './admin/pups/pups-create/pups-create.component';
 import { PupsReadComponent } from './admin/pups/pups-read/pups-read.component';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './shared/services/auth.guard';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 
 const routes: Routes = [

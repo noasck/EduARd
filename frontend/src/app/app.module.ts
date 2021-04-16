@@ -10,6 +10,7 @@ import { LoginPageComponent } from './admin/login-page/login-page.component';
 import { RegistrationComponent } from './admin/registration/registration.component';
 import { PupsReadComponent } from './admin/pups/pups-read/pups-read.component';
 import { PupsCreateComponent } from './admin/pups/pups-create/pups-create.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PupsCreateComponent } from './admin/pups/pups-create/pups-create.compon
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
