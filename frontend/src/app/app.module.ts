@@ -11,6 +11,8 @@ import { RegistrationComponent } from './admin/registration/registration.compone
 import { PupsReadComponent } from './admin/pups/pups-read/pups-read.component';
 import { PupsCreateComponent } from './admin/pups/pups-create/pups-create.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    HttpClientModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [],
