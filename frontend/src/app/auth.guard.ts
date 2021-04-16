@@ -8,23 +8,23 @@ import { AuthService } from './auth.service';
 })
 
 export class AuthGuard implements CanActivate {
-    
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Promise<boolean> | boolean {
-    return this.authService.isAuthenticated().then(isAuth => {
-      if (isAuth) {
-        return true
-      } else {
-        return false
-        this.router.navigate(['/'])
-      }
-    })
-  }
+    constructor(
+        private authService: AuthService,
+        private router: Router
+    ) { }
+
+    canActivate(
+        route: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot
+    ): Promise<boolean> | boolean {
+        return this.authService.isAuthenticated().then(isAuth => {
+            if (isAuth) {
+                return true
+            } else {
+                return false
+                this.router.navigate(['/'])
+            }
+        })
+    }
 }

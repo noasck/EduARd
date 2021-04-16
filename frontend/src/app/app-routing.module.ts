@@ -13,10 +13,12 @@ const routes: Routes = [
     path: '', component: LandingPageComponent
   },
   {
-    path: 'admin', component: AdminComponent,canActivate: [AuthGuard], children: [
-      {path: 'pups', component: PupsReadComponent, children: [
-        {path: 'create', component: PupsCreateComponent}
-      ]}
+    path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
+      {
+        path: 'pups', component: PupsReadComponent, children: [
+          { path: 'create', component: PupsCreateComponent }
+        ]
+      }
     ]
   },
   {
