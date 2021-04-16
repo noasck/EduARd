@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pups-read.component.scss']
 })
 export class PupsReadComponent implements OnInit {
-
+  src: string = ""
   constructor() { }
 
   ngOnInit(): void {

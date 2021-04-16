@@ -13,7 +13,7 @@ const routes: Routes = [
     path: '', component: LandingPageComponent
   },
   {
-    path: 'admin', component: AdminComponent, canActivate: [AuthGuard], children: [
+    path: 'admin', component: AdminComponent, children: [
       {
         path: 'pups', component: PupsReadComponent, children: [
           { path: 'create', component: PupsCreateComponent }
