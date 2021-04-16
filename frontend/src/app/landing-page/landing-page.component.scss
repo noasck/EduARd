@@ -12,6 +12,9 @@ nav {
   height: 35px;
   padding-bottom: 0;
 }
+nav p{
+    cursor: pointer;
+}
 .wrapper {
   max-width: 1000px;
   margin: 0 auto;
@@ -53,17 +56,17 @@ main {
   width: 15px;
   height: 15px;
 }
-.btn{
-    width: 200px;
-    font-size: 20px;
-    margin-top: 50px;
-    margin-bottom: 100px;
+.btn {
+  width: 200px;
+  font-size: 20px;
+  margin-top: 50px;
+  margin-bottom: 100px;
 }
 footer {
   background: #333333;
   padding: 20px;
 }
-.hucuton p{
+footer p {
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
