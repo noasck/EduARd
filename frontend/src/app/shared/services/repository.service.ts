@@ -24,10 +24,10 @@ export class RepositoryService {
     return this.http.put<T>(this.createCompleteRoute(route, this.envUrl.apiUrl), body, {headers: this.generateHeaders()});
   }
 
-  public delete = (route: string) => {
-    return this.http.delete(this.createCompleteRoute(route, this.envUrl.apiUrl), {headers: this.generateHeaders()});
+  public delete<T>(route: string): Observable<T> {
+    return this.http.delete<T>(this.createCompleteRoute(route, this.envUrl.apiUrl), { headers: this.generateHeaders() });
   }
-
+  
   private createCompleteRoute = (route: string, envAddress: string) => {
     return `${envAddress}/${route}`;
   }
