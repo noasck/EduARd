@@ -7,4 +7,7 @@ class PupSchema(Schema):
     video_filename = fields.String(attribute='video_filename')
     join_code = fields.String(attribute='join_code')
     created_at = fields.Number(attribute='created_at')
-
+    preview_filename = fields.Number(
+        attribute='preview_filename',
+        required=False
+    )

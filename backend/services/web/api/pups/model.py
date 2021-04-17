@@ -24,6 +24,11 @@ class Pup(db.Model):
     )
     join_code = db.Column(db.String, unique=True, nullable=False)
     created_at = db.Column(db.Integer, onupdate=int(time()))
+    preview_filename = db.Column(
+        db.String,
+        db.ForeignKey('files.filename', onupdate='CASCADE', ondelete='CASCADE'),
+        nullable=True
+    )
 
     def update(self, changes: IPup):
         """Update certain record."""

@@ -3,7 +3,7 @@ import string
 from ..project.abstract.abstract_service import AbstractService
 from .interface import IPup
 from .model import Pup, Subscription
-from typing import List
+from typing import List, Type
 from time import time
 from ..users.service import UserService
 
@@ -17,14 +17,13 @@ class PupService(AbstractService[Pup, IPup]):
     """Class implements Pup db operations."""
 
     @classmethod
-    def model(cls):
+    def model(cls) -> Type[Pup]:
         """
         Resolve Location model class.
         :return: Location Type.
         :rtype: type
         """
         return Pup
-
 
     @classmethod
     def get_by_join_code(cls, join_code: str) -> Pup:
@@ -57,7 +56,7 @@ class PupService(AbstractService[Pup, IPup]):
     def search_by_name(cls, str_to_find):
         return Pup.query.filter(
             Pup.name.ilike(f'%{str_to_find}%'),
-        ).all()
+        ).order_by(Pup.created_at.desc()).all()
 
     @classmethod
     def has_permission(cls, user_id, pup_id):
