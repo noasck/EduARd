@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, NgForm, } from '@angular/forms';
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 import { Pup, PupService } from '../pups.service';
+import { FileService } from './file.service';
 
 @Component({
   selector: 'app-pups-create',
@@ -9,14 +10,17 @@ import { Pup, PupService } from '../pups.service';
   styleUrls: ['./pups-create.component.scss']
 })
 export class PupsCreateComponent implements OnInit {
+  URL = window.URL || window.webkitURL
   createOption: string = "";
   currentPup: Pup = {name: ""};
   stage: number = 0;
   public files: NgxFileDropEntry[] = [];
   file: File
+  public hasVideo: boolean;
   fileName: string =""
+  file_url: string;
 
-  constructor(private formBuilder: FormBuilder, private pupS: PupService) { }
+  constructor(private formBuilder: FormBuilder, private pupS: PupService, private fileS: FileService) { }
 
   ngOnInit(): void {
   }
@@ -48,9 +52,18 @@ export class PupsCreateComponent implements OnInit {
 
           // Here you can access the real file
           console.log(droppedFile.relativePath, file);
+          
           this.file = file
-          this.fileName = file.name
-
+          this.fileS.postFile(file).subscribe(
+            (data) => {},
+            (err) => console.log(err),
+            () => {
+              if (this.file.type == "video/mp4") {this.hasVideo = true;}
+              else {this.hasVideo = false}
+            }
+          );
+          
+          
         });
       } else {
         // It was a directory (empty directories are added, otherwise only files)

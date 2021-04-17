@@ -1,6 +1,6 @@
-/*import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { RepositoryService } from '../shared/services/repository.service';
+import { RepositoryService } from '../../shared/services/repository.service';
 
 export interface FileResponse {
   id: number;
@@ -30,4 +30,4 @@ export class FileService {
   getFileByName(filename): Observable<FormData> {
     return this.repo.getData<FormData>(this.ROUTE + filename);
   }
-}*/
+}

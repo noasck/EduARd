@@ -21,14 +21,21 @@
     </form>
 
     <div class="with-video" *ngIf="createOption == '1'">
-        <div class="center video">
+        <div class="center video" *ngIf="!hasVideo">
             <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
                 (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
                 <ng-template class="words" ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
                     drop an .mp4 file here
-                    <button type="button" (click)="openFileSelector()">Browse Files</button>
+                    <button type="button" (click)="openFileSelector()">Upload...</button>
                 </ng-template>
             </ngx-file-drop>
+        </div>
+        <div class="center player row" *ngIf="hasVideo">
+            <vg-player>
+                <video #media [vgMedia]="$any(media)" id="singleVideo" preload="auto" controls crossorigin>
+                    <source [src]="file_url" type="video/mp4">
+                </video>
+            </vg-player>
         </div>
 
 
@@ -48,8 +55,8 @@
             <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
                 (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
                 <ng-template class="words" ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
-                    drop an AR model file here
-                    <button type="button" (click)="openFileSelector()">Browse Files</button>
+                    <p>drop an AR model file here</p>
+                    <button type="button" (click)="openFileSelector()">Upload...</button>
                 </ng-template>
             </ngx-file-drop>
         </div>

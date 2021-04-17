@@ -15,6 +15,10 @@ import { PupsComponent } from './pups/pups.component';
 import { httpInterceptorProviders } from './shared/services/http-interceptors';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxFileDropModule } from 'ngx-file-drop';
+import {VgCoreModule} from '@videogular/ngx-videogular/core';
+import {VgControlsModule} from '@videogular/ngx-videogular/controls';
+import {VgOverlayPlayModule} from '@videogular/ngx-videogular/overlay-play';
+import {VgBufferingModule} from '@videogular/ngx-videogular/buffering';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,11 @@ import { NgxFileDropModule } from 'ngx-file-drop';
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    NgxFileDropModule
+    NgxFileDropModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule
   ],
   providers: [
     httpInterceptorProviders
