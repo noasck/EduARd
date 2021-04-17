@@ -1,4 +1,4 @@
-# Edu*AR*d <img src='logo.svg' height=50px> 
+# <img src='logo.svg' height=35px>  Edu*AR*d 
 
 Cross-platform solution for 3D scan sharing. 
 Breathtaking and bewitching software based on Google ARCore library for
