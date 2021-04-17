@@ -49,6 +49,20 @@ class PupResource(Resource):
         return PupService.create(request.parsed_obj)
 
 
+@api.route('/owned')
+class PupCreatorResource(Resource):
+    """Pups."""
+
+    @responds(schema=PupSchema(many=True), api=api)
+    @api.doc(security='loggedIn')
+    @jwt_required
+    def get(self) -> List[Pup]:
+        """Get all Pups created by current user."""
+        claim = get_jwt_claims()
+        user_id = int(claim['id'])
+        return PupService.get_authored_by(user_id)
+
+
 @api.route('/search/<string:str_to_find>')
 @api.param('str_to_find', 'Part of Pup name to search')
 class PupSearchResource(Resource):

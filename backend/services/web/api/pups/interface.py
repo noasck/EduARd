@@ -8,3 +8,4 @@ class IPup(TypedDict, total=False):
     creator_id: int
     join_code: str
     created_at: int
+    preview_filename: str

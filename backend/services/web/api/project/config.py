@@ -13,3 +13,4 @@ class Config(object):
     FLASK_ENV = os.getenv('FLASK_ENV')  # noqa: WPS115
     MEDIA_FOLDER = f"{os.getenv('APP_FOLDER')}/project/media"  # noqa: WPS115,WPS237,E501
     INIT_DB = bool(os.getenv('DB_INIT'))  # noqa: WPS115
+    JWT_ACCESS_TOKEN_EXPIRES = False
