@@ -52,7 +52,7 @@ export class PupsCreateComponent implements OnInit {
           // Here you can access the real file
           this.file = file
           this.fileName = file.name
-
+          this.onSubmit()
         });
       } else {
         // It was a directory (empty directories are added, otherwise only files)
