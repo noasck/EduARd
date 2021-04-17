@@ -11,7 +11,8 @@ then
     echo "PostgreSQL started"
 fi
 
-python manage.py db migrate
-python manage.py db upgrade
+python manage.py tear_down
+
+python manage.py set_up
 
 exec "$@"

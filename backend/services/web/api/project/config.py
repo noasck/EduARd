@@ -6,7 +6,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config(object):
-    API_TITLE = 'Take Me To AR API'  # noqa: WPS115
+    API_TITLE = 'EduARd API'  # noqa: WPS115
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')  # noqa: WPS115
     SQLALCHEMY_TRACK_MODIFICATIONS = False  # noqa: WPS115
     JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')  # noqa: WPS115

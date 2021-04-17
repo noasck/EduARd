@@ -19,9 +19,9 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER=tmtar_user
+      - POSTGRES_USER=api_user
       - POSTGRES_PASSWORD=dfgBNM3689
-      - POSTGRES_DB=tmtar_dev
+      - POSTGRES_DB=api_dev
     networks:
       - api
 
