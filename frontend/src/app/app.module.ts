@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PupsComponent } from './pups/pups.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { NgxFileDropModule } from 'ngx-file-drop';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxFileDropModule
   ],
   providers: [],
   bootstrap: [AppComponent],
