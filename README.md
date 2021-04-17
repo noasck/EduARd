@@ -1,4 +1,5 @@
 # Edu*AR*d
+![Eduard](logo.svg)
 Cross-platform solution for 3D scan sharing. 
 Breathtaking and bewitching software based on Google ARCore library for
 teachers, students, scientists who want to share their technical solutions and
