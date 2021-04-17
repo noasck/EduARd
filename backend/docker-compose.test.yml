@@ -1,0 +1,32 @@
+version: '3.7'
+services:
+  web:
+    build: ./services/web
+    command: pytest . --durations=0 --capture=no -v
+    volumes:
+      - ./services/web/:/usr/src/app/
+    ports:
+      - 5000:5000
+    env_file:
+      - ./.env.dev
+    networks:
+      - api
+
+  db:
+    image: postgres:latest
+    ports:
+    - 5432:5432
+    volumes:
+      - postgresData:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=api_user
+      - POSTGRES_PASSWORD=dfgBNM3689
+      - POSTGRES_DB=api_dev
+    networks:
+      - api
+
+volumes:
+  postgresData:
+
+networks:
+  api:

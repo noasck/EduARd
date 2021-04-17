@@ -1,0 +1,6 @@
+[flake8]
+ignore = S104,D100,WPS300,WPS412,D104,D101,WPS305,WPS433,WPS226,WPS213,WPS232,WPS231,WPS430
+exclude = .git,__pycache__,*test.py,fixtures.py,events,objects,migrations
+max-complexity = 10
+strictness=short
+docstring_style=sphinx
