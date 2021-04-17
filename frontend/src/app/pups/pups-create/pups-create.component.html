@@ -1,1 +1,48 @@
-<p>pups-create works!</p>
+<div class="pups">
+    <div class="menu">
+        <code>> <u routerLink="/pups">Pups</u> / <u>create</u></code>
+    </div>
+
+    <div>
+        <div class="namePup label">
+            <div class="input-group input-group-sm mb-3">
+                <label>Name</label>
+                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            </div>
+        </div>
+
+        <div>
+            <label>Creation mode</label>
+            <select [(ngModel)]="createOption">
+                <option [ngValue] = "1" selected>With video</option>
+                <option [ngValue] = "0">Without video</option>
+            </select>
+        </div>
+    </div>
+
+    <div class = "with-video" *ngIf = "createOption == '1'">
+        <div class="video">
+
+        </div>
+    
+        <div class="upload-video label">
+            <label>Model</label>
+            <input type="file" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+        </div>
+    
+        <div class="timecodes">
+            <button type="button" class="btn btn-success">Set timecode</button>
+    
+        </div>
+    </div>
+
+    <div class = "without-video">
+        <div class="object">
+
+        </div>
+
+        <button type="button" class="btn btn-success">Upload Pup</button>
+    </div>
+    
+
+</div>

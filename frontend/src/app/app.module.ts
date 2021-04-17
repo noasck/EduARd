@@ -10,7 +10,7 @@ import { RegistrationComponent } from './admin/registration/registration.compone
 import { PupsReadComponent } from './pups/pups-read/pups-read.component';
 import { PupsCreateComponent } from './pups/pups-create/pups-create.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PupsComponent } from './pups/pups.component';
 
 
@@ -30,7 +30,9 @@ import { PupsComponent } from './pups/pups.component';
     NgbModule,
     HttpClientModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

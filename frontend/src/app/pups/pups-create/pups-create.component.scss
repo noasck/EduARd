@@ -1,0 +1,55 @@
+
+.namePup{
+    display: flex;
+}
+.menu{
+    margin-bottom: 40px;
+}
+.label input{
+    max-width: 300px;
+    margin-left: 20px;
+    border-radius: 7px;
+}
+.label{
+    margin-top: 20px;
+}
+select{
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.upload-video{
+    text-align: center;
+}
+
+.btn-success{
+    width: 200px;
+    font-size: 20px;
+    margin-top: 50px;
+    margin-bottom: 70px;
+}
+.timecodes{
+    text-align: center;
+}
+.without-video{
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+
+
+
+
+.video{
+    margin: 0 auto;
+    height: 400px;
+    width: 800px;
+    background-color:darkslateblue;
+}
+.object{
+    margin: 0 auto;
+    height: 400px;
+    width: 800px;
+    background-color:darkgoldenrod;
+}

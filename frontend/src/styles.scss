@@ -24,6 +24,7 @@ nav {
   font-family: Montserrat;
 }
 footer {
+  cursor: pointer;
   background: #333333;
   padding: 20px;
 }
@@ -33,4 +34,16 @@ footer p {
   font-weight: 500;
   font-size: 14px;
   color: #f2f2f2;
+  margin-bottom: 0rem;
+}
+.menu {
+  display: flex;
+}
+.menu code {
+  font-size: 20px;
+  cursor: pointer;
+}
+.pups {
+  padding: 30px;
+  margin-bottom: 60px;
 }
