@@ -12,7 +12,7 @@ export interface Pup {
     providedIn: 'root',
 })
 export class PupService {
-    route = 'Pups/';
+    route = 'pups/';
     constructor(public repository: RepositoryService) {
 
     }

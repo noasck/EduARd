@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-pups-create',
@@ -8,11 +8,11 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class PupsCreateComponent implements OnInit {
   createOption: string = '1'
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-
-      console.log(this.createOption)
   }
+
+  
 
 }

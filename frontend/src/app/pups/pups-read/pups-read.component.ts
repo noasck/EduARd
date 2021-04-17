@@ -13,10 +13,9 @@ export class PupsReadComponent implements OnInit {
   errorMessage: string = ""
   pay: boolean = false
 
-  constructor(/*private pupsService: PupService*/) { }
+  constructor(private pupsService: PupService) { }
 
   ngOnInit(): void {
-    /*
     this.pupsService.getPups().subscribe(
       (res) => {
         this.fetchedPups = res
@@ -26,18 +25,18 @@ export class PupsReadComponent implements OnInit {
       },
       () => {
       }
-    )*/
+    )
   }
 
   deletePup(id: number) {
-  /*  this.pupsService.deletePupByID(id).subscribe(
+  this.pupsService.deletePupByID(id).subscribe(
       () => {
         this.fetchedPups = this.fetchedPups.filter((pup) => pup.id != id);
       },
       (error) => {
         this.errorMessage = error;
       }
-    )*/
+    )
   }
 
 }
