@@ -18,9 +18,15 @@ api = Namespace(
     decorators=[cross_origin()],
 )
 
+sub_api = Namespace(
+    'subscription',
+    description='Ns with User subscriptions.',
+    decorators=[cross_origin()],
+)
+
 
 @api.route('/')
-class LocationResource(Resource):
+class PupResource(Resource):
     """Pups."""
 
     @responds(schema=PupSchema(many=True), api=api)
@@ -45,7 +51,7 @@ class LocationResource(Resource):
 
 @api.route('/search/<string:str_to_find>')
 @api.param('str_to_find', 'Part of Pup name to search')
-class LocationSearchResource(Resource):
+class PupSearchResource(Resource):
     """Providing Pup search."""
 
     @api.doc(responses={
@@ -53,29 +59,31 @@ class LocationSearchResource(Resource):
         404: '{"status": "No match"}',
     })
     def get(self, str_to_find: str):
-        """Get matching locations."""
+        """Get matching pups."""
         pups: List[Pup] = PupService.search_by_name(str_to_find)
         if pups:
-            serialized_locations = PupSchema().dump(pups, many=True)
+            serialized_pups = PupSchema().dump(pups, many=True)
             return jsonify(
-                {'status': 'Match', 'pups': serialized_locations},
+                {'status': 'Match', 'pups': serialized_pups},
             )
         return jsonify({'status': 'No match'}), 404
 
 
 @api.route('/<int:pup_id>')
-@api.param('pup_id', 'Locations db ID')
-class LocationIdResource(Resource):
+@api.param('pup_id', 'Pup db ID')
+class PupIdResource(Resource):
 
-    @responds(schema=PupSchema, api=api)
     def get(self, pup_id: int):
-        """Get specific Location instance."""
-        return PupService.get_by_id(pup_id)
+        """Get count of downloads of Pup."""
+        return jsonify({'count':PupService.get_downloads_count(pup_id)})
 
+    @api.doc(responses={
+        200: '{"status": "Success",\n "id": deleted_id}',
+    })
     @api.doc(security='loggedIn')
     @jwt_required
     def delete(self, pup_id: int):
-        """Delete single Location."""
+        """Delete single Pup."""
         claim = get_jwt_claims()
         user_id = int(claim['id'])
         if PupService.has_permission(user_id, pup_id):
@@ -90,7 +98,7 @@ class LocationIdResource(Resource):
     @api.doc(security='loggedIn')
     @jwt_required
     def put(self, pup_id: int):
-        """Update single Location."""
+        """Update single Pup."""
         claim = get_jwt_claims()
         user_id = int(claim['id'])
         if PupService.has_permission(user_id, pup_id):
@@ -99,3 +107,57 @@ class LocationIdResource(Resource):
             return PupService.update(loc, changes)
         else:
             abort(403)
+
+
+@sub_api.route('/')
+class SubscriptionResource(Resource):
+
+    @responds(schema=PupSchema(many=True), api=sub_api)
+    @sub_api.doc(security='loggedIn')
+    @jwt_required
+    def get(self):
+        """Get user saved Pups."""
+        claim = get_jwt_claims()
+        user_id = int(claim['id'])
+        return PupService.get_subscriptions(user_id)
+
+
+@sub_api.route('/<int:pup_id>')
+@sub_api.param('pup_id', 'Pup db ID')
+class SubscriptionsIdResource(Resource):
+    @sub_api.doc(security='loggedIn')
+    @jwt_required
+    def post(self, pup_id: int):
+        """Save Pup for current user."""
+        claim = get_jwt_claims()
+        user_id = int(claim['id'])
+        if PupService.add_subscription_by_id(user_id, pup_id):
+            return jsonify({'status': 'Success'})
+        else:
+            abort(404)
+
+    @sub_api.doc(security='loggedIn')
+    @jwt_required
+    def delete(self, pup_id: int):
+        """Delete Pup for current user from saved."""
+        claim = get_jwt_claims()
+        user_id = int(claim['id'])
+        if PupService.delete_subscription(user_id, pup_id):
+            return jsonify({'status': 'Success'})
+        else:
+            abort(404)
+
+
+@sub_api.route('/join/<string:join_code>')
+@sub_api.param('join_code', 'Pup join code to add Sub.')
+class JoinCodeResource(Resource):
+    @sub_api.doc(security='loggedIn')
+    @jwt_required
+    def post(self, join_code: str):
+        """Save Pup for current user."""
+        claim = get_jwt_claims()
+        user_id = int(claim['id'])
+        if PupService.add_subscription_by_join_code(user_id, join_code):
+            return jsonify({'status': 'Success'})
+        else:
+            abort(404)
