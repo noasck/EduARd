@@ -11,7 +11,7 @@ export interface Pup {
 @Injectable({
     providedIn: 'root',
 })
-export class Pupservice {
+export class PupService {
     route = 'Pups/';
     constructor(public repository: RepositoryService) {
 

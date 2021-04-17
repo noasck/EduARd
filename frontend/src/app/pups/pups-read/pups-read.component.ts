@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Pup, PupService } from '../pups.service';
 
 @Component({
   selector: 'app-pups-read',
@@ -7,10 +8,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PupsReadComponent implements OnInit {
   src: string = ""
-  deletePupId = ""
-  constructor() { }
+  deletePupId = null
+  fetchedPups: Pup[] = []
+  errorMessage: string = ""
+  constructor(private pupsService: PupService) { }
 
   ngOnInit(): void {
+    this.pupsService.getPups().subscribe(
+      (res) => {
+        this.fetchedPups = res
+      },
+      (error) => {
+        this.errorMessage = error;
+      },
+      () => {
+      }
+    )
+  }
+
+  deletePup(id: number) {
+    this.pupsService.deletePupByID(id).subscribe(
+      () => {
+        this.fetchedPups = this.fetchedPups.filter((pup) => pup.id != id);
+      },
+      (error) => {
+        this.errorMessage = error;
+      }
+    )
   }
 
 }

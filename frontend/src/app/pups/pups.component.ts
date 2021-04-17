@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pups.component.scss']
 })
 export class PupsComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {
