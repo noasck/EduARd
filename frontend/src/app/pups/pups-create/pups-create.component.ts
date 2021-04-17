@@ -7,7 +7,7 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./pups-create.component.scss']
 })
 export class PupsCreateComponent implements OnInit {
-  createOption: string = ''
+  createOption: string = '1'
   constructor() { }
 
   ngOnInit(): void {

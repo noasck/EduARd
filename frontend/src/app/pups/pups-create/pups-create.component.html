@@ -22,7 +22,6 @@
 
     <div class = "with-video" *ngIf = "createOption == '1'">
         <div class="video">
-
         </div>
     
         <div class="upload-video label">
@@ -36,7 +35,7 @@
         </div>
     </div>
 
-    <div class = "without-video">
+    <div class = "without-video" *ngIf = "createOption == '0'"> 
         <div class="object">
 
         </div>
