@@ -23,7 +23,7 @@
             <!--*ngFor = "let pup of pups"-->
             <div class="pup shadow rounded">
                 <img src="https://giffiles.alphacoders.com/195/195303.gif">
-                <div class="delete">
+                <div class="delete" (click) = "deletePupId = '5'">
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#d9534f"
                         class="bi bi-x-circle-fill" viewBox="0 0 16 16">
                         <path
@@ -35,7 +35,7 @@
 
             <div class="pup shadow rounded">
                 <img src="https://giffiles.alphacoders.com/195/195303.gif">
-                <div class="delete">
+                <div class="delete" (click) = "deletePupId = '5'">
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#d9534f"
                         class="bi bi-x-circle-fill" viewBox="0 0 16 16">
                         <path
@@ -46,7 +46,7 @@
             </div>
             <div class="pup shadow rounded">
                 <img src="https://giffiles.alphacoders.com/195/195303.gif">
-                <div class="delete">
+                <div class="delete" (click) = "deletePupId = '5'">
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#d9534f"
                         class="bi bi-x-circle-fill" viewBox="0 0 16 16">
                         <path
@@ -57,7 +57,7 @@
             </div>
             <div class="pup shadow rounded">
                 <img src="https://giffiles.alphacoders.com/195/195303.gif">
-                <div class="delete">
+                <div class="delete" (click) = "deletePupId = '5'">
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#d9534f"
                         class="bi bi-x-circle-fill" viewBox="0 0 16 16">
                         <path
@@ -80,3 +80,15 @@
     </main>
 
 </div>
+
+<div class = "delete-pup" *ngIf = "deletePupId">
+    <div class="backdrop"></div>
+    <div class = dp>
+        <h4>Are you sure you want to delete this pup?</h4>
+        <div class="buttons">
+            <button type="button" class="btn btn-danger btn-block">Confirm</button>
+            <button type="button" class="btn btn-success btn-block" (click) = "deletePupId = ''">Cancel</button>
+        </div>
+    </div>
+</div>
+

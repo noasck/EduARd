@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PupsReadComponent implements OnInit {
   src: string = ""
+  deletePupId = ""
   constructor() { }
 
   ngOnInit(): void {
