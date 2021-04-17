@@ -1,6 +1,7 @@
 # Frontend for EduARd
 
 To run pls use docker (might need sudo privilledes)
+
 ```
 cd frontend
 sudo docker build -t example:dev .

@@ -3,22 +3,22 @@
         <code>> <u routerLink="/pups">Pups</u> / <u>create</u></code>
     </div>
 
-    <div>
+    <form #f="ngForm">
         <div class="namePup label">
-            <div class="input-group input-group-sm mb-3">
-                <label>Name</label>
-                <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+            <div class="row input-group input-group-sm mb-3">
+                <label class="col-1">Name</label>
+                <input [(ngModel)]="currentPup.name" name="name" type="text" class="form-control col-4" aria-label="Small" aria-describedby="inputGroup-sizing-sm" (change)="onChangeName(f)">
             </div>
         </div>
 
-        <div>
-            <label>Creation mode</label>
-            <select [(ngModel)]="createOption">
-                <option [ngValue] = "1" selected>With video</option>
+        <div class="row" *ngIf="stage >= 1">
+            <label class="col-2">Creation mode</label>
+            <select [(ngModel)]="createOption" name="option" class="col-3" (change)="onChangeMode(f)">
+                <option [ngValue] = "1">With video</option>
                 <option [ngValue] = "0">Without video</option>
             </select>
         </div>
-    </div>
+    </form>
 
     <div class = "with-video" *ngIf = "createOption == '1'">
         <div class="video">

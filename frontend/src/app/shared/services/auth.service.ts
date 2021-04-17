@@ -4,7 +4,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { EnvironmentUrlService } from './environment-url.service';
-import { stringify } from '@angular/compiler/src/util';
 
 export interface TokenResponse {
   'access_token': string;

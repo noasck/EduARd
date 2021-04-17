@@ -2,7 +2,7 @@
     <header>
         <div class="wrapper">
             <nav>
-                <p class="logo" routerLink = "/">Edu<b>AR</b>d</p>
+                <p class="logo" routerLink="/">Edu<b>AR</b>d</p>
             </nav>
         </div>
     </header>
@@ -12,7 +12,7 @@
 <div class="d-flex justify-content">
   <div id="gSignInWrapper">
     <span class="label">Sign in with:</span>
-    <div id="customBtn" class="customGPlusSignIn">
+    <div id="customBtn" class="customGPlusSignIn" (click)="clickLogin()" >
       <span class="buttonText">Google</span>
     </div>
   </div>

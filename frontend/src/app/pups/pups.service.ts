@@ -2,12 +2,12 @@ import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RepositoryService } from 'src/app/shared/services/repository.service';
 export interface Pup {
-    join_code: string
-    created_at: number
-    id: number
-    video_filename: string
-    name: string
-}
+    id?: number;
+    name: string;
+    video_filename?: string;
+    created_at?: number;
+    join_code?: string; 
+  }
 @Injectable({
     providedIn: 'root',
 })

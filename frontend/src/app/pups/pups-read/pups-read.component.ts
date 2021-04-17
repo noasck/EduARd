@@ -35,8 +35,14 @@ export class PupsReadComponent implements OnInit {
       },
       (error) => {
         this.errorMessage = error;
+      },
+      () => {
+        this.deletePupId = 0;
       }
     )
   }
 
+  delegateDelete(id: number | undefined) {
+    this.deletePupId = <number>id;
+  }
 }

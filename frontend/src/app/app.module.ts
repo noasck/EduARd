@@ -9,9 +9,10 @@ import { LoginPageComponent } from './admin/login-page/login-page.component';
 import { RegistrationComponent } from './admin/registration/registration.component';
 import { PupsReadComponent } from './pups/pups-read/pups-read.component';
 import { PupsCreateComponent } from './pups/pups-create/pups-create.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PupsComponent } from './pups/pups.component';
+import { httpInterceptorProviders } from './shared/services/http-interceptors';
 
 
 @NgModule({
@@ -34,7 +35,9 @@ import { PupsComponent } from './pups/pups.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    httpInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

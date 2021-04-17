@@ -16,12 +16,13 @@ export class LoginPageComponent implements OnInit {
   }
 
   clickLogin(): void {
-    this.auth.login('jjok730@gmail.com').subscribe(
+    let token: string = 'jjok730@gmail.com';
+    this.auth.login(token).subscribe(
       (token) => {
         console.log('Token Request...');
       },
       (err) => {},
-      () => this.router.navigate(['/admin/'])
+      () => this.router.navigate(['/pups/'])
     );
   }
 }
