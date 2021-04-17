@@ -7,23 +7,23 @@
         <div class="namePup label">
             <div class="row input-group input-group-sm mb-3">
                 <label class="col-1">Name</label>
-                <input [(ngModel)]="currentPup.name" name="name" type="text" class="form-control col-4"
-                    aria-label="Small" aria-describedby="inputGroup-sizing-sm" (change)="onChangeName(f)">
+                <input [(ngModel)]="currentPup.name" name="name" type="text" class="form-control col-4" aria-label="Small" aria-describedby="inputGroup-sizing-sm" (change)="onChangeName(f)">
             </div>
         </div>
 
         <div class="row" *ngIf="stage >= 1">
             <label class="col-2">Creation mode</label>
             <select [(ngModel)]="createOption" name="option" class="col-3" (change)="onChangeMode(f)">
-                <option [ngValue]="1">With video</option>
-                <option [ngValue]="0">Without video</option>
+                <option [ngValue] = "1">With video</option>
+                <option [ngValue] = "0">Without video</option>
             </select>
         </div>
     </form>
 
     <div class="with-video" *ngIf="createOption == '1'">
         <div class="center video">
-            <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
+            <div *ngIf = "!uploadedVideo; else vid">
+                <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
                 (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
                 <ng-template class="words" ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
                     drop an .mp4 file here
@@ -33,10 +33,11 @@
             <table class="table">
                 <tbody class="upload-name-style">
                     <tr>
-                        <td *ngIf="fileName"><strong>Filename: {{ fileName }}</strong></td>
+                        <td *ngIf = "fileName"><strong>Filename: {{ fileName }}</strong></td>
                     </tr>
                 </tbody>
             </table>
+            </div>
         </div>
 
 
@@ -62,8 +63,8 @@
             </ngx-file-drop>
             <table class="table">
                 <tbody class="upload-name-style">
-                    <tr>
-                        <td *ngIf="fileName"><strong>Filename: {{ fileName }}</strong></td>
+                    <tr >
+                        <td *ngIf = "fileName"><strong>Filename: {{ fileName }}</strong></td>
                     </tr>
                 </tbody>
             </table>
@@ -71,17 +72,36 @@
 
 
 
-        <button type="button" class="btn btn-success" (click)='onSubmit()'>Upload Pup</button>
+        <button type="button" class="btn btn-success" (click)='onSubmitFile()'>Upload Pup</button>
     </div>
 
 
 </div>
 
 
-<div *ngIf="uploaded">
-    <div class="backdrop"></div>
-    <div class="uploaded">
+<div *ngIf = "uploadedFile">
+    <div class = "backdrop"></div>
+    <div class = "uploaded">
         <label>Файл успішно завантажено</label>
-        <button type="button" class="btn btn-success" (click)="uploaded = false">ОК</button>
+        <button type="button" class="btn btn-success" (click) = "uploadedFile = false">ОК</button>
     </div>
 </div>
+
+<!--<div *ngIf = "uploadedVideo">
+    <div class = "backdrop"></div>
+    <div class = "uploaded">
+        <label>Файл успішно завантажено</label>
+        <button type="button" class="btn btn-success" (click) = "uploadedVideo = false">ОК</button>
+    </div>
+</div>-->
+<ng-template #vid>
+    <div class="player-wrapper">
+
+        <vg-player>
+          <video #media id="singleVideo" preload="auto" controls>
+            <source src="http://static.videogular.com/assets/videos/videogular.mp4" type="video/mp4">
+          </video>
+        </vg-player>
+    
+      </div>
+</ng-template>
