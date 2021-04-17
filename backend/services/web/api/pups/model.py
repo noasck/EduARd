@@ -31,3 +31,9 @@ class Pup(db.Model):
             if key not in {'id', 'creator_id', 'join_code', 'created_at'}:
                 setattr(self, key, new_value)
         return self
+
+
+class Subscription(db.Model):
+    __tablename__ = 'subscriptions'
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True)
+    pup_id = db.Column(db.Integer, db.ForeignKey('pups.id'), primary_key=True)

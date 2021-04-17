@@ -2,9 +2,10 @@ import random
 import string
 from ..project.abstract.abstract_service import AbstractService
 from .interface import IPup
-from .model import Pup
+from .model import Pup, Subscription
 from typing import List
 from time import time
+from ..users.service import UserService
 
 
 def random_word(length):
@@ -24,9 +25,10 @@ class PupService(AbstractService[Pup, IPup]):
         """
         return Pup
 
+
     @classmethod
     def get_by_join_code(cls, join_code: str) -> Pup:
-        return Pup.query.filter_by(join_code=join_code).all()
+        return Pup.query.filter_by(join_code=join_code).first()
 
     @classmethod
     def get_by_name(cls, name: str) -> Pup:
@@ -39,7 +41,7 @@ class PupService(AbstractService[Pup, IPup]):
     @classmethod
     def create(cls, new_instance: IPup) -> Pup:
         join_code = random_word(6)
-        while len(PupService.get_by_join_code(join_code)) != 0:
+        while PupService.get_by_join_code(join_code) is not None:
             join_code = random_word(6)
         loc = cls.model()(
             join_code=join_code,
@@ -70,3 +72,37 @@ class PupService(AbstractService[Pup, IPup]):
         :rtype: List[Model]
         """
         return cls.model().query.order_by(Pup.created_at.desc()).all()
+
+    @classmethod
+    def get_subscriptions(cls, user_id: int) -> List[Pup]:
+        return UserService.get_subscriptions(user_id)
+
+    @classmethod
+    def add_subscription_by_id(cls, user_id: int, pup_id: int):
+        new_sub = Subscription(user_id=user_id, pup_id=pup_id)
+        cls._db.session.add(new_sub)
+        cls._db.session.commit()
+        return True
+
+    @classmethod
+    def add_subscription_by_join_code(cls, user_id: int, join_code: str):
+        pup_id = PupService.get_by_join_code(join_code)
+        new_sub = Subscription(user_id=user_id, pup_id=pup_id)
+        cls._db.session.add(new_sub)
+        cls._db.session.commit()
+        return True
+
+    @classmethod
+    def delete_subscription(cls, user_id: int, pup_id: int):
+        sub = Subscription.query.filter(
+            Subscription.user_id == user_id,
+            Subscription.pup_id == pup_id,
+        ).first_or_404()
+
+        cls._db.session.delete(sub)
+        cls._db.session.commit()
+        return True
+
+    @classmethod
+    def get_downloads_count(cls, pup_id: int):
+        return len(Subscription.query.filter_by(pup_id=pup_id).all())
