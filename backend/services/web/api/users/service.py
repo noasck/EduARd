@@ -46,3 +46,7 @@ class UserService(AbstractService[User, IUser]):
             cls._db.session.add(usr)
             cls._db.session.commit()
         return usr
+
+    @classmethod
+    def get_subscriptions(cls, user_id):
+        return UserService.get_by_id(user_id).children

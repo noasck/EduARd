@@ -2,6 +2,7 @@ from flask_restx import Api
 
 from .files import register_routes as add_file_routing
 from .users import register_routes as add_user_routing
+from .pups import register_routes as add_pups_routing
 
 
 def register_routes(api: Api):
@@ -13,3 +14,4 @@ def register_routes(api: Api):
     """
     add_user_routing(api)
     add_file_routing(api)
+    add_pups_routing(api)
