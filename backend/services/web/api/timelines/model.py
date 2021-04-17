@@ -22,7 +22,7 @@ class Timeline(db.Model):
         nullable=False
     )
 
-    def update(self, changes: IPup):
+    def update(self, changes: ITimeline):
         """Update certain record."""
         for key, new_value in changes.items():
             if key not in {'id', 'seconds'}:
