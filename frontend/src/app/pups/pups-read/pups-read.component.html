@@ -1,0 +1,69 @@
+<div class="pups">
+    <div class="menu">
+        <code>/ <u>Pups</u> /</code>
+        <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                        <path fill-rule="evenodd"
+                            d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                    </svg>
+                </span>
+            </div>
+            <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                [(ngModel)]="src">
+        </div>
+    </div>
+
+    <main>
+        <div class="many-pups">
+
+
+            <div *ngFor="let pup of fetchedPups | search:src" class="pup shadow rounded">
+                <img src="https://media4.s-nbcnews.com/i/newscms/2018_22/2451826/180601-atomi-mn-1540_f415a90a9f0fcbddc7dfa4cc7b5a36c3.jpg">
+                <div class="delete" (click)="delegateDelete(pup.id)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#d9534f"
+                        class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
+                    </svg>
+                </div>
+                <p>{{pup.name}}</p>
+            </div>
+
+
+
+        </div>
+
+        <div>
+            <button type="button" class="btn btn-light shadow" (click)="pay = true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#5cb85c" class="bi bi-plus"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                </svg></button>
+        </div>
+    </main>
+
+</div>
+
+<div class="delete-pup" *ngIf="deletePupId">
+    <div class="backdrop"></div>
+    <div class=dp>
+        <h3>Ви дійсно хочете видалити цей пуп?</h3>
+        <div class="buttons">
+            <button type="button" class="btn btn-danger btn-block" (click)="deletePup(deletePupId)">Confirm</button>
+            <button type="button" class="btn btn-success btn-block" (click)="deletePupId = 0">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div class="backdrop" *ngIf="pay">
+    <div class="pay">
+        <label>Щоб створити пуп, вам потрібно заплатити!</label>
+        <button type="button" class="btn btn-success btn-block" (click)="timeOut()">$5 Заплатити</button>
+    </div>
+</div>

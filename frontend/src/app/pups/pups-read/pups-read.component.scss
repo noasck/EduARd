@@ -1,0 +1,68 @@
+.input-group {
+  max-width: 820px;
+  margin-left: 30px;
+}
+.many-pups {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 50px;
+  grid-row-gap: 50px;
+  margin-bottom: 40px;
+}
+.pup {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.pup img {
+  height: 80%;
+  width: 100%;
+}
+
+.pup p {
+  background-color: #5cb85c;
+  height: 20%;
+  padding: 10px;
+  text-align: center;
+}
+
+.btn-light {
+  border-radius: 50%;
+  float: right;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.delete {
+  position: absolute;
+  top: 5px;
+  padding-left: 90%;
+  transition: 2s;
+}
+.delete:hover svg {
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  transform: scale(1.2);
+}
+.pay {
+  text-align: center;
+  padding: 20px;
+  border: 3px solid#dc3545;
+  box-shadow: 1px 1px #a72936;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 120px;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #f2f2f2;
+  width: 400px;
+  margin-top: -50px;
+  transform: translate(-50%, -50%);
+}
+.dp{
+  text-align: center;
+}
