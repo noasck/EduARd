@@ -21,24 +21,40 @@
   grid-row-gap: 50px;
 }
 .pup {
-    width: 280px;
-    height: 280px;
-    overflow: hidden;
-    margin-bottom: 0;
+  position: relative;
+  width: 280px;
+  height: 280px;
+  overflow: hidden;
+  margin-bottom: 0;
 }
 .pup img {
-    height: 235px;
+  height: 80%;
+  width: 100%;
 }
 
 .pup p {
   background-color: #5cb85c;
-  padding: 10px 15px;
+  height: 20%;
+  padding: 10px;
   text-align: center;
 }
 
+.btn-light {
+  border-radius: 50%;
+  float: right;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
 
-.btn{
-    border-radius: 50%;
-    float: right;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+.delete {
+  position: absolute;
+  top: 5px;
+  padding-left: 90%;
+  transition: 2s;
+}
+.delete:hover svg{
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  transform: scale(1.2);
 }
