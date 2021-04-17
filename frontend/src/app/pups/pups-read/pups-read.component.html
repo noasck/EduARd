@@ -97,7 +97,7 @@
 <div class = "delete-pup" *ngIf = "deletePupId">
     <div class="backdrop"></div>
     <div class = dp>
-        <h4>Are you sure you want to delete this pup?</h4>
+        <h2>Are you sure you want to delete this pup?</h2>
         <div class="buttons">
             <button type="button" class="btn btn-danger btn-block" (click) = "deletePup(deletePupId)">Confirm</button>
             <button type="button" class="btn btn-success btn-block" (click) = "deletePupId = 0">Cancel</button>
@@ -107,7 +107,7 @@
 
 <div class="backdrop" *ngIf = "pay">
     <div class = "pay">
-        <h5>To create a pup you need to pay!</h5>
-        <button type="button" class="btn btn-success btn-block" routerLink="/pups/create/" (click) = "pay = false">Pay</button>
+        <label>To create a pup you need to pay!</label>
+        <button type="button" class="btn btn-success btn-block" routerLink="/pups/create/" (click) = "pay = false">5$ Pay</button>
     </div>
 </div>

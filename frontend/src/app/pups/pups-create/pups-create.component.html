@@ -20,29 +20,44 @@
         </div>
     </form>
 
-    <div class = "with-video" *ngIf = "createOption == '1'">
-        <div class="video">
+    <div class="with-video" *ngIf="createOption == '1'">
+        <div class="center video">
+            <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
+                (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                <ng-template class="words" ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                    drop an .mp4 file here
+                    <button type="button" (click)="openFileSelector()">Browse Files</button>
+                </ng-template>
+            </ngx-file-drop>
         </div>
-    
+
+
         <div class="upload-video label">
             <label>Model</label>
             <input type="file" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
         </div>
-    
+
         <div class="timecodes">
             <button type="button" class="btn btn-success">Set timecode</button>
-    
+
         </div>
     </div>
 
-    <div class = "without-video" *ngIf = "createOption == '0'"> 
-        <div class="object">
-            <input type = "file">
+    <div class="without-video" *ngIf="createOption == '0'">
+        <div class="center object">
+            <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
+                (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                <ng-template class="words" ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                    drop an AR model file here
+                    <button type="button" (click)="openFileSelector()">Browse Files</button>
+                </ng-template>
+            </ngx-file-drop>
         </div>
-        
 
-        <button type="button" class="btn btn-success">Upload Pup</button>
+
+
+        <button type="button" class="btn btn-success" (click)='onSubmit()'>Upload Pup</button>
     </div>
-    
+
 
 </div>

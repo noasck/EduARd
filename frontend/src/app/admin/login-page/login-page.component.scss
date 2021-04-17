@@ -1,4 +1,4 @@
-#customBtn {
+/*#customBtn {
     display: inline-block;
     background: white;
     color: #444;
@@ -29,7 +29,7 @@
     padding-right: 42px;
     font-size: 14px;
     font-weight: bold;
-    /* Use the Roboto font that is loaded in the <head> */
+    /* Use the Roboto font that is loaded in the <head> 
     font-family: 'Roboto', sans-serif;
   }
 
@@ -39,4 +39,37 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}*/
+
+.btn-light {
+  border-radius: 50%;
+  float: right;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+label {
+  font-size: 30px;
+  vertical-align: middle;
+  position: absolute;
+  top: 50%;
+  left: 35%;
+}
+.login {
+  margin: 0 auto;
+  padding: 200px;
+  font-family: Montserrat;
+  display: flex;
+  justify-content: flex-end;
+}
+button {
+  background-color: #f2f2f2;
+  border: none;
+  color: #4caf50;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 50%;
+  margin-left: 70px;
 }
