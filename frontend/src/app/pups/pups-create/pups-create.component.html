@@ -7,15 +7,16 @@
         <div class="namePup label">
             <div class="row input-group input-group-sm mb-3">
                 <label class="col-1">Name</label>
-                <input [(ngModel)]="currentPup.name" name="name" type="text" class="form-control col-4" aria-label="Small" aria-describedby="inputGroup-sizing-sm" (change)="onChangeName(f)">
+                <input [(ngModel)]="currentPup.name" name="name" type="text" class="form-control col-4"
+                    aria-label="Small" aria-describedby="inputGroup-sizing-sm" (change)="onChangeName(f)">
             </div>
         </div>
 
         <div class="row" *ngIf="stage >= 1">
             <label class="col-2">Creation mode</label>
             <select [(ngModel)]="createOption" name="option" class="col-3" (change)="onChangeMode(f)">
-                <option [ngValue] = "1">With video</option>
-                <option [ngValue] = "0">Without video</option>
+                <option [ngValue]="1">With video</option>
+                <option [ngValue]="0">Without video</option>
             </select>
         </div>
     </form>
@@ -29,6 +30,13 @@
                     <button type="button" (click)="openFileSelector()">Browse Files</button>
                 </ng-template>
             </ngx-file-drop>
+            <table class="table">
+                <tbody class="upload-name-style">
+                    <tr>
+                        <td *ngIf="fileName"><strong>Filename: {{ fileName }}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
 
@@ -52,6 +60,13 @@
                     <button type="button" (click)="openFileSelector()">Browse Files</button>
                 </ng-template>
             </ngx-file-drop>
+            <table class="table">
+                <tbody class="upload-name-style">
+                    <tr>
+                        <td *ngIf="fileName"><strong>Filename: {{ fileName }}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
 
@@ -60,4 +75,13 @@
     </div>
 
 
+</div>
+
+
+<div *ngIf="uploaded">
+    <div class="backdrop"></div>
+    <div class="uploaded">
+        <label>Файл успішно завантажено</label>
+        <button type="button" class="btn btn-success" (click)="uploaded = false">ОК</button>
+    </div>
 </div>

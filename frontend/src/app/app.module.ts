@@ -15,6 +15,7 @@ import { PupsComponent } from './pups/pups.component';
 import { httpInterceptorProviders } from './shared/services/http-interceptors';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxFileDropModule } from 'ngx-file-drop';
+import { SearchPipe } from './pups/pups-read/search.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NgxFileDropModule } from 'ngx-file-drop';
     RegistrationComponent,
     PupsReadComponent,
     PupsCreateComponent,
-    PupsComponent
+    PupsComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

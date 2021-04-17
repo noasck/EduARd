@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators, NgForm, } from '@angular/forms';
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 import { Pup, PupService } from '../pups.service';
+import { FileService } from './file.service'
 
 @Component({
   selector: 'app-pups-create',
@@ -10,13 +11,14 @@ import { Pup, PupService } from '../pups.service';
 })
 export class PupsCreateComponent implements OnInit {
   createOption: string = "";
-  currentPup: Pup = {name: ""};
+  currentPup: Pup = { name: "" };
   stage: number = 0;
   public files: NgxFileDropEntry[] = [];
   file: File
-  fileName: string =""
+  fileName: string = ""
+  uploaded = false
 
-  constructor(private formBuilder: FormBuilder, private pupS: PupService) { }
+  constructor(private pupS: PupService, private fileService: FileService) { }
 
   ngOnInit(): void {
   }
@@ -27,7 +29,7 @@ export class PupsCreateComponent implements OnInit {
       this.pupS.createPup(this.currentPup).subscribe(
         (data) => {
           console.log(data)
-        }, (err) => {},
+        }, (err) => { },
         () => {
           console.log("Completed")
         }
@@ -35,19 +37,19 @@ export class PupsCreateComponent implements OnInit {
     }
   }
 
-  onChangeMode(f: NgForm) {}
+  onChangeMode(f: NgForm) {
+  }
 
   public dropped(files: NgxFileDropEntry[]) {
     this.files = files;
     for (const droppedFile of files) {
 
       // Is it a file?
-      if (droppedFile.fileEntry.isFile) {
+      if (droppedFile.fileEntry.isFile && (this.createOption == '0')) {
         const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
         fileEntry.file((file: File) => {
 
           // Here you can access the real file
-          console.log(droppedFile.relativePath, file);
           this.file = file
           this.fileName = file.name
 
@@ -60,19 +62,22 @@ export class PupsCreateComponent implements OnInit {
     }
   }
 
-  public fileOver(event){
+  public fileOver(event) {
     console.log(event);
   }
 
-  public fileLeave(event){
+  public fileLeave(event) {
     console.log(event);
   }
 
-  onSubmit(){
+  onSubmit() {
     const formData = new FormData()
     formData.append('file', this.file)
-    /*отправить на сервер */
     console.log(formData.get('file'))
+    this.fileService.postFile(formData).subscribe(
+      (res) => {  this.uploaded = true  }
+    );
+    this.fileName = ""
   }
 }
 

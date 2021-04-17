@@ -17,7 +17,7 @@ export class RepositoryService {
   }
 
   public create<T>(route: string, body: any): Observable<T> {
-    return this.http.post<T>(this.createCompleteRoute(route, this.envUrl.apiUrl), body, {headers: this.generateHeaders()});
+    return this.http.post<T>(this.createCompleteRoute(route, this.envUrl.apiUrl), body);
   }
 
   public update<T>(route: string, body: any): Observable<T> {

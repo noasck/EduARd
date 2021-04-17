@@ -1,52 +1,68 @@
-label{
-    cursor: pointer;
+label {
+  cursor: pointer;
 }
-.namePup{
-    display: flex;
+.namePup {
+  display: flex;
 }
-.menu{
-    margin-bottom: 40px;
+.menu {
+  margin-bottom: 40px;
 }
-.label input{
-    max-width: 300px;
-    margin-left: 20px;
-    border-radius: 7px;
+.label input {
+  max-width: 300px;
+  margin-left: 20px;
+  border-radius: 7px;
 }
-.label{
-    margin-top: 20px;
+.label {
+  margin-top: 20px;
 }
-select{
-    margin-left: 20px;
-    margin-bottom: 20px;
-}
-
-.upload-video{
-    text-align: center;
+select {
+  margin-left: 20px;
+  margin-bottom: 20px;
 }
 
-.btn-success{
-    width: 200px;
-    font-size: 20px;
-    margin-top: 50px;
-    margin-bottom: 70px;
-}
-.timecodes{
-    text-align: center;
-}
-.without-video{
-    margin: 0 auto;
-    text-align: center;
+.upload-video {
+  text-align: center;
 }
 
-
-
-
-
-.video{
-    margin: 0 auto;
-    width: 800px;
+.btn-success {
+  width: 200px;
+  font-size: 20px;
+  margin-top: 50px;
+  margin-bottom: 70px;
 }
-.object{
-    margin: 0 auto;
-    width: 800px;
+.timecodes {
+  text-align: center;
+}
+.without-video {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.video {
+  margin: 0 auto;
+  width: 800px;
+}
+.object {
+  margin: 0 auto;
+  width: 800px;
+}
+.uploaded {
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+  border: 3px solid#4abe79;
+  box-shadow: 1px 1px #2d754a;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 150px;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #f2f2f2;
+  width: 300px;
+  margin-top: -50px;
+  transform: translate(-50%, -50%);
+}
+.btn {
+  margin: 15px;
 }

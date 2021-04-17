@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Pup, PupService } from '../pups.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class PupsReadComponent implements OnInit {
   errorMessage: string = ""
   pay: boolean = false
 
-  constructor(private pupsService: PupService) { }
+  constructor(private pupsService: PupService, private router: Router) { }
 
   ngOnInit(): void {
     this.pupsService.getPups().subscribe(
@@ -29,7 +30,7 @@ export class PupsReadComponent implements OnInit {
   }
 
   deletePup(id: number) {
-  this.pupsService.deletePupByID(id).subscribe(
+    this.pupsService.deletePupByID(id).subscribe(
       () => {
         this.fetchedPups = this.fetchedPups.filter((pup) => pup.id != id);
       },
@@ -44,5 +45,10 @@ export class PupsReadComponent implements OnInit {
 
   delegateDelete(id: number | undefined) {
     this.deletePupId = <number>id;
+  }
+
+  timeOut() {
+    setTimeout(() => this.router.navigate(['/pups/create']), 1000);
+    this.pay = false
   }
 }

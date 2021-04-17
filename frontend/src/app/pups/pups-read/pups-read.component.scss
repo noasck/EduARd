@@ -1,7 +1,5 @@
-
-
 .input-group {
-  max-width: 700px;
+  max-width: 820px;
   margin-left: 30px;
 }
 
@@ -43,7 +41,7 @@
   padding-left: 90%;
   transition: 2s;
 }
-.delete:hover svg{
+.delete:hover svg {
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
   -ms-transform: scale(1.2);
@@ -65,4 +63,7 @@
   width: 400px;
   margin-top: -50px;
   transform: translate(-50%, -50%);
+}
+.dp{
+  text-align: center;
 }

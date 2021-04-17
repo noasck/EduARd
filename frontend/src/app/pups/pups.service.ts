@@ -6,8 +6,8 @@ export interface Pup {
     name: string;
     video_filename?: string;
     created_at?: number;
-    join_code?: string; 
-  }
+    join_code?: string;
+}
 @Injectable({
     providedIn: 'root',
 })
