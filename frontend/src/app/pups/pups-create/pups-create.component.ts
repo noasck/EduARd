@@ -15,16 +15,25 @@ export class PupsCreateComponent implements OnInit {
   stage: number = 0;
   public files: NgxFileDropEntry[] = [];
   public videofiles: NgxFileDropEntry[] = [];
+
   file: File
   fileName: string = ""
   uploadedFile = false
+
   videofile: File
   uploadedVideo = false
-  videofileName: string  = ""
+  videofileName: string = ""
+  link: string
 
-  constructor(private pupS: PupService, private fileService: FileService) { }
+  form: FormGroup;
+
+  constructor(private pupS: PupService, private fileService: FileService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      avatar: []
+    });
+
   }
 
   onChangeName(f: NgForm) {
@@ -44,7 +53,7 @@ export class PupsCreateComponent implements OnInit {
   onChangeMode(f: NgForm) {
   }
 
-  public dropped(files: NgxFileDropEntry[]) {
+  public droppedFile(files: NgxFileDropEntry[]) {
     this.files = files;
     for (const droppedFile of files) {
 
@@ -56,7 +65,6 @@ export class PupsCreateComponent implements OnInit {
           // Here you can access the real file
           this.file = file
           this.fileName = file.name
-          this.onSubmitFile()
         });
       } else {
         // It was a directory (empty directories are added, otherwise only files)
@@ -80,7 +88,7 @@ export class PupsCreateComponent implements OnInit {
           this.videofile = file
           this.videofileName = file.name
 
-          //this.onSubmit()
+          this.onSubmitVideo()
         });
       } else {
         // It was a directory (empty directories are added, otherwise only files)
@@ -99,13 +107,24 @@ export class PupsCreateComponent implements OnInit {
   }
 
   onSubmitVideo() {
+    let name = ""
     const formData = new FormData()
-    formData.append('file', this.file)
+    formData.append('file', this.videofile)
     console.log(formData.get('file'))
     this.fileService.postFile(formData).subscribe(
-      (res) => {  this.uploadedVideo = true  }
+      (res) => {
+        this.uploadedVideo = true
+        name = res.filename
+        this.link = this.fileService.getLink(res.filename)
+        console.log(res.filename)
+      }
     );
-    this.fileName = ""
+
+
+    this.videofileName = ""
+    this.videofile = null
+
+
   }
 
 
@@ -114,10 +133,24 @@ export class PupsCreateComponent implements OnInit {
     formData.append('file', this.file)
     console.log(formData.get('file'))
     this.fileService.postFile(formData).subscribe(
-      (res) => {  this.uploadedFile = true  }
+      (res) => { this.uploadedFile = true }
     );
     this.fileName = ""
+    this.file = null
   }
+
+  onFileChange(event): void {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      const formData = new FormData()
+      formData.append('file', file)
+      console.log(formData.get('file'))
+      this.fileService.postFile(formData).subscribe(
+        (res) => { this.uploadedFile = true }
+      );
+    }
+  }
+
 }
 
 

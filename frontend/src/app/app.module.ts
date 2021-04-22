@@ -43,7 +43,6 @@ import { SearchPipe } from './pups/pups-read/search.pipe';
     BrowserAnimationsModule,
     NgxFileDropModule,
     VgCoreModule,
-    VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
     VgBufferingModule

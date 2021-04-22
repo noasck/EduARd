@@ -55,7 +55,7 @@ select {
   position: fixed;
   top: 50%;
   left: 50%;
-  height: 150px;
+  height: 120px;
   border-radius: 5px;
   font-size: 16px;
   background-color: #f2f2f2;
@@ -66,3 +66,8 @@ select {
 .btn {
   margin: 15px;
 }
+
+p {
+  cursor: pointer;
+}
+
