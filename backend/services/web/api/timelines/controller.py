@@ -43,4 +43,4 @@ class LocationIdResource(Resource):
     @responds(schema=TimelineSchema(many=True), api=api)
     def get(self, pup_id: int):
         """Get Timelines for specific pup."""
-        return TimelineService.get_by_id(pup_id)
+        return TimelineService.get_by_pup_id(pup_id)
