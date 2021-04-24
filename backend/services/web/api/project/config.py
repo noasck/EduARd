@@ -14,3 +14,6 @@ class Config(object):
     MEDIA_FOLDER = f"{os.getenv('APP_FOLDER')}/project/media"  # noqa: WPS115,WPS237,E501
     INIT_DB = bool(os.getenv('DB_INIT'))  # noqa: WPS115
     JWT_ACCESS_TOKEN_EXPIRES = False
+    AUTH0_DOMAIN = os.getenv('AUTH0_DOMAIN')
+    AUTH0_ALGORITHMS = os.getenv('AUTH0_ALGORITHMS')
+    AUTH0_API_AUDIENCE = os.getenv('AUTH0_API_AUDIENCE')

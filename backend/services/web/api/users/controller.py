@@ -6,7 +6,7 @@ from flask_cors import cross_origin
 from flask_jwt_extended import create_access_token  # noqa: WPS318
 from flask_restx import Namespace, Resource, abort
 
-from .controller_identity import verify_token
+from .controller_identity import verify_token, get_payload
 from .schema import UserSchema
 from .service import User, UserService
 
@@ -27,6 +27,16 @@ class UserResource(Resource):
     def get(self) -> List[User]:
         """Get all users."""
         return UserService.get_all()
+
+
+@api.route('/login/')
+class LoginResource(Resource):
+
+    def get(self):
+        """Get internal API token from Google-token."""
+        identity = get_payload()
+        print(identity)
+        return identity
 
 
 @api.route('/login/<string:token>')
