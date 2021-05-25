@@ -23,7 +23,7 @@
 
 
             <div *ngFor="let pup of fetchedPups | search:src" class="pup shadow rounded">
-                <img src="https://media4.s-nbcnews.com/i/newscms/2018_22/2451826/180601-atomi-mn-1540_f415a90a9f0fcbddc7dfa4cc7b5a36c3.jpg">
+                <img src="https://img2.cgtrader.com/items/2870767/9a2ff679f5/circuit-board-3d-model-max-obj-fbx.jpg">
                 <div class="delete" (click)="delegateDelete(pup.id)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#d9534f"
                         class="bi bi-x-circle-fill" viewBox="0 0 16 16">
@@ -63,7 +63,9 @@
 
 <div class="backdrop" *ngIf="pay">
     <div class="pay">
-        <label>Щоб створити пуп, вам потрібно заплатити!</label>
-        <button type="button" class="btn btn-success btn-block" (click)="timeOut()">$5 Заплатити</button>
+
+        <img class="paypal"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/PayPal_logo.svg/1280px-PayPal_logo.svg.png">
+        <button type="button" class="btn btn-danger btn-block" (click)="timeOut()">$5</button>
     </div>
 </div>

@@ -3,29 +3,29 @@
         <code>> <u routerLink="/pups">Pups</u> / <u>create</u></code>
     </div>
 
-    <form #f="ngForm">
+    <form class="form" #f="ngForm">
         <div class="namePup label">
             <div class="row input-group input-group-sm mb-3">
-                <label class="col-1">Name</label>
+                <p class="col-1">Name:</p>
                 <input [(ngModel)]="currentPup.name" name="name" type="text" class="form-control col-4"
                     aria-label="Small" aria-describedby="inputGroup-sizing-sm" (change)="onChangeName(f)">
             </div>
         </div>
 
         <div class="row" *ngIf="stage >= 1">
-            <label class="col-2">Creation mode</label>
-            <select [(ngModel)]="createOption" name="option" class="col-3" (change)="onChangeMode(f)">
+            <p class="creation col-2">Creation mode:</p>
+            <select [(ngModel)]="createOption" name="option" class="form-select">
                 <option [ngValue]="1">With video</option>
                 <option [ngValue]="0">Without video</option>
             </select>
         </div>
     </form>
 
-    <div class="with-video" *ngIf="createOption == '1'">
+    <!--Pup with video-->
+    <div class="with-video" *ngIf="createOption=='1'">
         <div class="center video">
             <div *ngIf="!uploadedVideo; else vid">
-                <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="droppedVideo($event)"
-                    (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="droppedFile($event)">
                     <ng-template class="words" ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
                         <p (click)="openFileSelector()">drop an .mp4 file here</p>
                     </ng-template>
@@ -42,22 +42,25 @@
 
 
         <div class="upload-video label">
-            <label>Model</label>
-            <input type="file" aria-label="Small" (change)="onFileChange($event)"
+            <label>Model:</label>
+            <input type="file" aria-label="Small" (change)="onModelChange($event)"
                 aria-describedby="inputGroup-sizing-sm">
+            <div class="input-group input-group-sm mb-3 time" [formGroup]="form">
+                <p class="col-1">Seconds:</p>
+                <input class="form-control col-4" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="text"
+                    formControlName="seconds">
+            </div>
         </div>
-
         <div class="timecodes">
-            <button type="button" class="btn btn-success">Set timecode</button>
+            <button type="button" class="btn btn-success" (click)="setTimeline()">Set timeline</button>
 
         </div>
-        <button type="button" class="btn btn-success">Upload Pup</button>
     </div>
 
-    <div class="without-video" *ngIf="createOption == '0'">
+    <!--Pup without video-->
+    <div class="without-video" *ngIf='createOption=="0"'>
         <div class="center object">
-            <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="droppedFile($event)"
-                (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+            <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="droppedFile($event)">
                 <ng-template class="words" ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
                     <p (click)="openFileSelector()">drop an AR model file here</p>
                 </ng-template>
@@ -70,13 +73,8 @@
                 </tbody>
             </table>
         </div>
-
-
-
         <button type="button" class="btn btn-success" (click)='onSubmitFile()'>Upload Pup</button>
     </div>
-
-
 </div>
 
 
@@ -88,20 +86,16 @@
     </div>
 </div>
 
-<!--<div *ngIf = "uploadedVideo">
-    <div class = "backdrop"></div>
-    <div class = "uploaded">
-        <label>Файл успішно завантажено</label>
-        <button type="button" class="btn btn-success" (click) = "uploadedVideo = false">ОК</button>
+<div *ngIf="timelineOption">
+    <div class="backdrop"></div>
+    <div class="uploaded">
+        <label>Timeline is setted</label>
+        <button type="button" class="btn btn-success" (click)="timelineOption = false">ОК</button>
     </div>
-</div>-->
+</div>
 <ng-template #vid>
     <div class="player-wrapper">
-
-
-
         <vg-player>
-
             <video #media id="singleVideo" preload="auto" controls>
                 <source src="{{link}}" type="video/mp4">
                 <source src="{{link}}" type="video/ogg">

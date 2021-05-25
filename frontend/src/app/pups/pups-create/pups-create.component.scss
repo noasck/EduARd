@@ -1,19 +1,33 @@
-label {
-  cursor: pointer;
-}
 .namePup {
   display: flex;
 }
 .menu {
   margin-bottom: 40px;
 }
-.label input {
+.pups input {
   max-width: 300px;
   margin-left: 20px;
   border-radius: 7px;
 }
-.label {
-  margin-top: 20px;
+.row select {
+  border-radius: 7px;
+  outline: none;
+}
+p:not(.creation) {
+  cursor: pointer;
+  font-size: 17px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+label {
+  cursor: pointer;
+  font-size: 17px;
+}
+.creation {
+  cursor: pointer;
+
+  font-size: 17px;
 }
 select {
   margin-left: 20px;
@@ -22,6 +36,13 @@ select {
 
 .upload-video {
   text-align: center;
+  margin: 0 auto;
+  .input-group {
+    justify-content: center;
+    input {
+      max-width: 70px;
+    }
+  }
 }
 
 .btn-success {
@@ -70,4 +91,3 @@ select {
 p {
   cursor: pointer;
 }
-

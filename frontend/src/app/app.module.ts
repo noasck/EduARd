@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { VgCoreModule, } from '@videogular/ngx-videogular/core';
 import { VgControlsModule } from '@videogular/ngx-videogular/controls';
 import { VgOverlayPlayModule } from '@videogular/ngx-videogular/overlay-play';
@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginPageComponent } from './admin/login-page/login-page.component';
-import { RegistrationComponent } from './admin/registration/registration.component';
 import { PupsReadComponent } from './pups/pups-read/pups-read.component';
 import { PupsCreateComponent } from './pups/pups-create/pups-create.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -25,7 +24,6 @@ import { SearchPipe } from './pups/pups-read/search.pipe';
     AppComponent,
     LandingPageComponent,
     LoginPageComponent,
-    RegistrationComponent,
     PupsReadComponent,
     PupsCreateComponent,
     PupsComponent,

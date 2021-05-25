@@ -1,0 +1,8 @@
+
+{
+    "domain": "pupaeduard.eu.auth0.com",
+    "audience": "eduard.ua.ff",
+    "clientId": "YWSLMgbL1jPZqX7RNDqOiEZYLzPcijnH",
+    "apiUrl": "http://localhost:5000/api",
+    "responseType": "token id_token"
+}

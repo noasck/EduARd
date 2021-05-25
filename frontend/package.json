@@ -21,8 +21,12 @@
     "@angular/platform-browser": "~11.2.10",
     "@angular/platform-browser-dynamic": "~11.2.10",
     "@angular/router": "~11.2.10",
+    "@auth0/auth0-angular": "^1.4.1",
     "@ng-bootstrap/ng-bootstrap": "^9.1.0",
     "@videogular/ngx-videogular": "^3.0.1",
+    "add": "^2.0.6",
+    "angular2-jwt": "^0.2.3",
+    "auth0-js": "^9.15.0",
     "bootstrap": "^4.6.0",
     "jquery": "^3.6.0",
     "ngx-file-drop": "^11.0.2",
@@ -30,6 +34,7 @@
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
+    "yarn": "^1.22.10",
     "zone.js": "~0.11.3"
   },
   "devDependencies": {

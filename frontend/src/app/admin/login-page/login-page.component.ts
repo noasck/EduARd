@@ -1,22 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
-
+import { AuthService } from 'src/app/shared/services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
-  constructor(private auth: AuthService, private router: Router) { }
-
-  ngOnInit(): void {
-
+  constructor(public auth: AuthService, private router: Router) {
   }
 
-  clickLogin(): void {
+  ngOnInit(): void {
+  }
+
+  login(): void {
     setTimeout(() => {
-      let token: string = 'jjok730@gmail.com';
+      let token: string = 'juliasupruniuk23@gmail.com';
       this.auth.login(token).subscribe(
         (token) => {
           console.log('Token Request...');
@@ -26,4 +25,6 @@ export class LoginPageComponent implements OnInit {
       );
     }, 1000);
   }
+
+
 }
