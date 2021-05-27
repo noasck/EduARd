@@ -1,4 +1,3 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/services/auth.service';
 
@@ -15,7 +14,8 @@ export class LandingPageComponent implements OnInit {
   }
   ngOnInit(): void {
   }
-  isActive(): boolean{
+  
+  isActive(): boolean {
     return this.auth.isActive()
   }
 }

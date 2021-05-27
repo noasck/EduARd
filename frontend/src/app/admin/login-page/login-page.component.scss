@@ -1,11 +1,11 @@
-.login-btn{
+.login-btn {
   border-radius: 50%;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 
   background-color: #f2f2f2;
   border: none;
   color: #4caf50;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -13,11 +13,26 @@
   margin: 4px 2px;
 }
 label {
-  font-size: 30px;
+  font-size: 20px;
+  text-align: center;
 }
 .login {
   font-family: Montserrat;
   display: flex;
   justify-content: center;
- margin-top: 200px;
+  margin-top: 200px;
+}
+
+input {
+  max-width: 300px;
+  &.ng-invalid.ng-touched {
+    border: 2px solid #d9534f;
+  }
+  &.ng-valid.ng-touched {
+    border: 1px solid green;
+  }
+}
+small {
+  font-size: 14px;
+  color: #d9534f;
 }

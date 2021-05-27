@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 @Component({
@@ -7,16 +8,22 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
+  email: FormGroup
   constructor(public auth: AuthService, private router: Router) {
   }
 
   ngOnInit(): void {
+    this.email = new FormGroup({
+      email: new FormControl("", [
+        Validators.required
+      ])
+    })
   }
 
   login(): void {
     setTimeout(() => {
       let token: string = 'juliasupruniuk23@gmail.com';
-      this.auth.login(token).subscribe(
+      this.auth.login(this.email.value.email).subscribe(
         (token) => {
           console.log('Token Request...');
         },
@@ -25,6 +32,5 @@ export class LoginPageComponent implements OnInit {
       );
     }, 1000);
   }
-
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-pups',
@@ -6,8 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pups.component.scss']
 })
 export class PupsComponent implements OnInit {
-  constructor() { }
 
+  constructor(private auth: AuthService) {
+
+  }
   ngOnInit(): void {
+  }
+
+  logout() {
+    this.auth.logout()
   }
 }

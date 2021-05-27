@@ -3,8 +3,8 @@
         <div class="wrapper">
             <nav>
                 <p class="logo">Edu<b>AR</b>d</p>
-                <p *ngIf = "!isActive()" routerLinkActive = "active"  routerLink = "/"><b>Login</b></p>
-                <p *ngIf = "isActive()" routerLinkActive = "active"  routerLink = "/pups"><b>Pups</b></p>
+                <p *ngIf="!isActive()" class="logio" routerLinkActive="active" routerLink="/login">Login</p>
+                <p *ngIf="isActive()" class="logio" routerLinkActive="active" routerLink="/pups">Pups</p>
 
             </nav>
         </div>

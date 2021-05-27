@@ -6,8 +6,8 @@ import { map } from 'rxjs/operators';
 import { EnvironmentUrlService } from './environment-url.service';
 
 export interface TokenResponse {
-  'access_token': string;
-  status: string;
+    'access_token': string;
+    status: string;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -40,8 +40,8 @@ export class AuthService {
         this.currentUserSubject.next("");
     }
 
-    isActive(): boolean{
-        if(localStorage.getItem('currentUser')){
+    isActive(): boolean {
+        if (localStorage.getItem('currentUser')) {
             return true
         }
         return false
