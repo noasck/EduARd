@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators, NgForm, } from '@angul
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 import { Pup, PupService } from '../pups.service';
 import { FileService } from './file.service'
+import { TimelineService } from './timeline.service';
 
 @Component({
   selector: 'app-pups-create',
@@ -10,7 +11,8 @@ import { FileService } from './file.service'
   styleUrls: ['./pups-create.component.scss']
 })
 export class PupsCreateComponent implements OnInit {
-  createOption: string = "";
+  createOption: string;
+  timelineOption: boolean;
   currentPup: Pup = { name: "" };
   stage: number = 0;
   public files: NgxFileDropEntry[] = [];
@@ -27,11 +29,13 @@ export class PupsCreateComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private pupS: PupService, private fileService: FileService, private formBuilder: FormBuilder) { }
+  constructor(private pupS: PupService, private fileService: FileService, private formBuilder: FormBuilder, private timelineService: TimelineService) { }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      avatar: []
+      seconds: null,
+      model_filename: "",
+      pup_id: null
     });
 
   }
@@ -39,99 +43,73 @@ export class PupsCreateComponent implements OnInit {
   onChangeName(f: NgForm) {
     if (this.currentPup.name != "") {
       this.stage = 1;
-      this.pupS.createPup(this.currentPup).subscribe(
-        (data) => {
-          console.log(data)
-        }, (err) => { },
-        () => {
-          console.log("Completed")
-        }
-      );
     }
-  }
-
-  onChangeMode(f: NgForm) {
   }
 
   public droppedFile(files: NgxFileDropEntry[]) {
-    this.files = files;
+    if (this.createOption == '0') {
+      this.files = files;
+    }
+    else if (this.createOption == '1') {
+      this.videofiles = files;
+    }
     for (const droppedFile of files) {
-
-      // Is it a file?
-      if (droppedFile.fileEntry.isFile && (this.createOption == '0')) {
+      if (droppedFile.fileEntry.isFile) {
         const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
         fileEntry.file((file: File) => {
+          if (this.createOption == '0') {
+            this.file = file
+            this.fileName = file.name
+          }
+          else if (this.createOption == '1') {
+            this.videofile = file
+            this.videofileName = file.name
 
-          // Here you can access the real file
-          this.file = file
-          this.fileName = file.name
+            this.onSubmitVideo()
+          }
         });
       } else {
-        // It was a directory (empty directories are added, otherwise only files)
         const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
-        console.log(droppedFile.relativePath, fileEntry);
       }
     }
   }
 
 
-  public droppedVideo(files: NgxFileDropEntry[]) {
-    this.videofiles = files;
-    for (const droppedFile of files) {
-
-      // Is it a file?
-      if (droppedFile.fileEntry.isFile && (this.createOption == '1')) {
-        const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
-        fileEntry.file((file: File) => {
-
-          // Here you can access the real file
-          this.videofile = file
-          this.videofileName = file.name
-
-          this.onSubmitVideo()
-        });
-      } else {
-        // It was a directory (empty directories are added, otherwise only files)
-        const fileEntry = droppedFile.fileEntry as FileSystemDirectoryEntry;
-        console.log(droppedFile.relativePath, fileEntry);
-      }
-    }
-  }
-
-  public fileOver(event) {
+  /*public fileOver(event) {
     console.log(event);
   }
-
   public fileLeave(event) {
     console.log(event);
   }
-
+*/
   onSubmitVideo() {
     let name = ""
     const formData = new FormData()
     formData.append('file', this.videofile)
-    console.log(formData.get('file'))
     this.fileService.postFile(formData).subscribe(
       (res) => {
         this.uploadedVideo = true
-        name = res.filename
         this.link = this.fileService.getLink(res.filename)
-        console.log(res.filename)
+        let pup: Pup = {
+          "name": this.currentPup.name,
+          "video_filename": res.filename,
+        }
+        this.pupS.createPup(pup).subscribe(
+          (res) => {
+            this.form.get('pup_id').setValue(res.id);
+            console.log("puuup", res)
+          }
+        )
       }
     );
-
-
     this.videofileName = ""
     this.videofile = null
-
-
   }
 
 
   onSubmitFile() {
     const formData = new FormData()
     formData.append('file', this.file)
-    console.log(formData.get('file'))
     this.fileService.postFile(formData).subscribe(
       (res) => { this.uploadedFile = true }
     );
@@ -144,13 +122,37 @@ export class PupsCreateComponent implements OnInit {
       const file = event.target.files[0];
       const formData = new FormData()
       formData.append('file', file)
-      console.log(formData.get('file'))
       this.fileService.postFile(formData).subscribe(
         (res) => { this.uploadedFile = true }
       );
     }
   }
 
+  onModelChange(event): void {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      const formData = new FormData()
+      formData.append('file', file)
+      this.fileService.postFile(formData).subscribe(
+        (res) => {
+          this.form.get('model_filename').setValue(res.filename);
+          console.log(this.form.value)
+        }
+      );
+    }
+  }
+
+  setTimeline() {
+    this.timelineService.postTimeline(this.form.value).subscribe(
+      res => {
+        this.timelineOption = true
+      }
+    )
+    this.form.reset()
+    this.currentPup.name = "";
+    this.createOption = ""
+    this.link = ""
+    this.uploadedVideo = false
+
+  }
 }
-
-

@@ -39,4 +39,11 @@ export class AuthService {
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next("");
     }
+
+    isActive(): boolean{
+        if(localStorage.getItem('currentUser')){
+            return true
+        }
+        return false
+    }
 }

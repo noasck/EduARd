@@ -12,8 +12,8 @@ nav {
   height: 35px;
   padding-bottom: 0;
 }
-nav p{
-    cursor: pointer;
+nav p {
+  cursor: pointer;
 }
 .wrapper {
   max-width: 1000px;
@@ -23,6 +23,7 @@ nav p{
   background-color: #f2f2f2;
 }
 main {
+  min-height: calc(100vh - 100px);
   padding-top: 80px;
   text-align: center;
   font-family: Montserrat;
@@ -61,7 +62,7 @@ main {
   margin-top: 50px;
   margin-bottom: 100px;
 }
-footer {
+/*footer {
   background: #333333;
   padding: 20px;
 }
@@ -71,4 +72,4 @@ footer p {
   font-weight: 500;
   font-size: 14px;
   color: #f2f2f2;
-}
+}*/

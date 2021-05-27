@@ -17,7 +17,7 @@ export class PupsReadComponent implements OnInit {
   constructor(private pupsService: PupService, private router: Router) { }
 
 
-  
+
   ngOnInit(): void {
     this.pupsService.getPups().subscribe(
       (res) => {

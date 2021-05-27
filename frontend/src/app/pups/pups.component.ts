@@ -10,5 +10,4 @@ export class PupsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
