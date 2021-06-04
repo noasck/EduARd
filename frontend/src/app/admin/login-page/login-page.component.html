@@ -14,7 +14,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Email</span>
           </div>
-          <input formControlName="email" type="text" class="form-control" placeholder="Enter your email"
+          <input formControlName="email" type="email" class="form-control" placeholder="Enter your email"
             aria-describedby="basic-addon1">
         </div>
         <div *ngIf="email.get('email').invalid && email.get('email').touched" class="validation">

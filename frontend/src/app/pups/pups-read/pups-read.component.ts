@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FileService } from '../pups-create/file.service';
 import { Pup, PupService } from '../pups.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class PupsReadComponent implements OnInit {
   errorMessage: string = ""
   pay: boolean = false
 
-  constructor(private pupsService: PupService, private router: Router) { }
+  constructor(private pupsService: PupService, private router: Router, public fileService: FileService) { }
 
 
 

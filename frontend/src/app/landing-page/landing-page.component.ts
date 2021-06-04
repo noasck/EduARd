@@ -14,7 +14,7 @@ export class LandingPageComponent implements OnInit {
   }
   ngOnInit(): void {
   }
-  
+
   isActive(): boolean {
     return this.auth.isActive()
   }

@@ -27,7 +27,6 @@ export class AuthService {
     login(socialToken: string): Observable<string> {
         return this.http.get<TokenResponse>(`${this.env.apiUrl}/users/login/${socialToken}`)
             .pipe(map(tokenResponse => {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(tokenResponse.access_token));
                 this.currentUserSubject.next(tokenResponse.access_token);
                 return tokenResponse.access_token;

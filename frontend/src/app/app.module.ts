@@ -11,13 +11,14 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginPageComponent } from './admin/login-page/login-page.component';
 import { PupsReadComponent } from './pups/pups-read/pups-read.component';
 import { PupsCreateComponent } from './pups/pups-create/pups-create.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PupsComponent } from './pups/pups.component';
 import { httpInterceptorProviders } from './shared/services/http-interceptors';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { SearchPipe } from './pups/pups-read/search.pipe';
+import { ErrorsComponent } from './admin/login-page/errors/errors.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { SearchPipe } from './pups/pups-read/search.pipe';
     LoginPageComponent,
     PupsReadComponent,
     PupsCreateComponent,
+    ErrorsComponent,
     PupsComponent,
     SearchPipe
   ],

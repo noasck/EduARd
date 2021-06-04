@@ -23,10 +23,21 @@
 
 
             <div *ngFor="let pup of fetchedPups | search:src" class="pup shadow rounded">
-                <img src="https://img2.cgtrader.com/items/2870767/9a2ff679f5/circuit-board-3d-model-max-obj-fbx.jpg">
-                <div class="delete" (click)="delegateDelete(pup.id)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#d9534f"
-                        class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+
+                <div class="player-wrapper preview">
+                    <vg-player>
+                        <video #media id="singleVideo" preload="auto" controls>
+                            <source src="{{fileService.getLink(pup.video_filename)}}" type="video/mp4">
+                            <source src="{{fileService.getLink(pup.video_filename)}}" type="video/ogg">
+                            <source src="{{fileService.getLink(pup.video_filename)}}" type="video/webm">
+                        </video>
+                    </vg-player>
+                </div>
+
+                <!--   <img src="https://img2.cgtrader.com/items/2870767/9a2ff679f5/circuit-board-3d-model-max-obj-fbx.jpg">-->
+                <div class="delete">
+                    <svg xmlns="http://www.w3.org/2000/svg" (click)="delegateDelete(pup.id)" width="25" height="25"
+                        fill="#d9534f" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
                         <path
                             d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z" />
                     </svg>
@@ -53,7 +64,7 @@
 <div class="delete-pup" *ngIf="deletePupId">
     <div class="backdrop"></div>
     <div class=dp>
-        <h3>Do you really want to remove this pup?</h3>
+        <p class="question">Do you really want to remove this pup?</p>
         <div class="buttons">
             <button type="button" class="btn btn-danger btn-block" (click)="deletePup(deletePupId)">Confirm</button>
             <button type="button" class="btn btn-success btn-block" (click)="deletePupId = 0">Cancel</button>
@@ -69,3 +80,5 @@
         <button type="button" class="btn btn-danger btn-block" (click)="timeOut()">$5</button>
     </div>
 </div>
+
+<app-errors *ngIf="errorMessage" [error]="errorMessage" (close)="errorMessage = '' "></app-errors>

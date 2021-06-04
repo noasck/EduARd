@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { RepositoryService } from 'src/app/shared/services/repository.service';
+import { ServerService } from 'src/app/shared/services/server.service';
 
 export interface Timeline {
   seconds: number;
@@ -16,14 +16,14 @@ export interface Timeline {
 export class TimelineService {
   ROUTE = 'timelines/';
 
-  constructor(private repo: RepositoryService) { }
+  constructor(private server: ServerService) { }
 
   postTimeline(data): Observable<Timeline> {
-    return this.repo.create<Timeline>(this.ROUTE, data);
+    return this.server.create<Timeline>(this.ROUTE, data);
   }
 
   getTimeline(): Observable<Timeline[]> {
-    return this.repo.getData<Timeline[]>(this.ROUTE);
+    return this.server.getData<Timeline[]>(this.ROUTE);
   }
 
 }

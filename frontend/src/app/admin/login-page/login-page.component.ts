@@ -15,14 +15,13 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
     this.email = new FormGroup({
       email: new FormControl("", [
-        Validators.required
+        Validators.required, Validators.email
       ])
     })
   }
 
   login(): void {
     setTimeout(() => {
-      let token: string = 'juliasupruniuk23@gmail.com';
       this.auth.login(this.email.value.email).subscribe(
         (token) => {
           console.log('Token Request...');

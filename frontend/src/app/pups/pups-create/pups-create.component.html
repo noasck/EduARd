@@ -81,7 +81,7 @@
 <div *ngIf="uploadedFile">
     <div class="backdrop"></div>
     <div class="uploaded">
-        <label>Файл успішно завантажено</label>
+        <label>File successfully uploaded</label>
         <button type="button" class="btn btn-success" (click)="uploadedFile = false">ОК</button>
     </div>
 </div>
@@ -104,3 +104,5 @@
         </vg-player>
     </div>
 </ng-template>
+
+<app-errors *ngIf="errorMessage" [error]="errorMessage" (close)="errorMessage = '' "></app-errors>

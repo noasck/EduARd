@@ -11,6 +11,7 @@ import { TimelineService } from './timeline.service';
   styleUrls: ['./pups-create.component.scss']
 })
 export class PupsCreateComponent implements OnInit {
+  errorMessage: string;
   createOption: string;
   timelineOption: boolean;
   currentPup: Pup = { name: "" };
@@ -75,13 +76,6 @@ export class PupsCreateComponent implements OnInit {
   }
 
 
-  /*public fileOver(event) {
-    console.log(event);
-  }
-  public fileLeave(event) {
-    console.log(event);
-  }
-*/
   onSubmitVideo() {
     let name = ""
     const formData = new FormData()
@@ -100,6 +94,9 @@ export class PupsCreateComponent implements OnInit {
             console.log("puuup", res)
           }
         )
+      },
+      (err) => {
+        this.errorMessage = err
       }
     );
     this.videofileName = ""
@@ -111,7 +108,10 @@ export class PupsCreateComponent implements OnInit {
     const formData = new FormData()
     formData.append('file', this.file)
     this.fileService.postFile(formData).subscribe(
-      (res) => { this.uploadedFile = true }
+      (res) => { this.uploadedFile = true },
+      (err) => {
+        this.errorMessage = err
+      }
     );
     this.fileName = ""
     this.file = null
@@ -123,7 +123,10 @@ export class PupsCreateComponent implements OnInit {
       const formData = new FormData()
       formData.append('file', file)
       this.fileService.postFile(formData).subscribe(
-        (res) => { this.uploadedFile = true }
+        (res) => { this.uploadedFile = true },
+        (err) => {
+          this.errorMessage = err
+        }
       );
     }
   }
@@ -137,6 +140,9 @@ export class PupsCreateComponent implements OnInit {
         (res) => {
           this.form.get('model_filename').setValue(res.filename);
           console.log(this.form.value)
+        },
+        (err) => {
+          this.errorMessage = err
         }
       );
     }
@@ -146,6 +152,9 @@ export class PupsCreateComponent implements OnInit {
     this.timelineService.postTimeline(this.form.value).subscribe(
       res => {
         this.timelineOption = true
+      },
+      (err) => {
+        this.errorMessage = err
       }
     )
     this.form.reset()
